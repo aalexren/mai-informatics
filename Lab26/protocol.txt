@@ -1,0 +1,59 @@
+198097@client17:~/Lab26$ cat head.txt
+***********************************
+*                                 *
+*    Лабораторная работа №25-26   *
+*  Автоматизация сборки программ  *
+* модульной структуры на языке Си *
+*  с использованием утилиты make. *
+*   Абстрактные типы данных.      *
+*           Рекурсия.             *
+*   Модульное программирование    *
+*          на языке Си.           *
+*  Выполнил студент группы 104    *
+*  Черница Артём Александрович    *
+*                                 *
+***********************************
+198097@client17:~/Lab26$ make --file Makefile2
+make: `main' is up to date.
+198097@client17:~/Lab26$ ./main
+[---> 1   5   3   2   4   ]
+[---> 5   4   3   2   1   ]
+[---> 37  11  78  81  69  29  6   58  95  49  ]
+[---> 95  81  78  69  58  49  37  29  11  6   ]
+198097@client17:~/Lab26$ vi main.c
+198097@client17:~/Lab26$ make
+gcc -c -g -Wall -std=c99 main.c
+gcc -g -Wall -std=c99 -o main main.o stack_static.o
+198097@client17:~/Lab26$ ./main
+[---> 1   5   3   2   4   ]
+[---> 5   4   3   2   1   ]
+[---> 37  11  78  81  69  29  6   58  95  49  ]
+[---> 95  81  78  69  58  49  37  29  11  6   ]
+198097@client17:~/Lab26$ vi main.c
+198097@client17:~/Lab26$ cat main.c
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+//#include "stack_dynamic.h"
+#include "stack_static.h"
+
+int main() {
+   SStack sstack;
+   init(&sstack);
+   srand(time(0));
+   for (int i = 0; i < 10; ++i) {
+      push(&sstack, rand()%20);
+   }
+   print(&sstack);
+   sort(&sstack);
+   print(&sstack);
+
+   return 0;
+}
+198097@client17:~/Lab26$ make
+gcc -c -g -Wall -std=c99 main.c
+gcc -g -Wall -std=c99 -o main main.o stack_static.o
+198097@client17:~/Lab26$ ./main
+[---> 14  2   7   14  9   14  5   13  5   12  ]
+[---> 14  14  14  13  12  9   7   5   5   2   ]
+198097@client17:~/Lab26$

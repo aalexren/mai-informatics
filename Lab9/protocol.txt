@@ -1,0 +1,79 @@
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAi/Informatics/Labs/Lab9$
+cat head.txt
+*********************************************************
+*                                                       *
+*                 Лабораторная работа №9                *
+* Составление и отладка простейшей программы на языке C *
+*               Выполнил студент группы 104             *
+*               Черница Артём Александрович             *
+*                                                       *
+*********************************************************
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAi/Informatics/Labs/Lab9$
+gcc main.c -o main.exec
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAi/Informatics/Labs/Lab9$
+cat main.c
+#include <stdio.h>
+
+int max(int a, int b) {
+  return a > b ? a : b;
+}
+
+int min(int a, int b) {
+  return a < b ? a : b;
+}
+
+int abs(int a) {
+  return a < 0 ? -a : a;
+}
+
+int sign(int a) {
+  return a < 0 ? -1 : a > 0 ? 1 : 0;
+}
+
+int main() {
+  // triangle (-10, 0), (0, 10), (-10, 20)
+  // y = x + 10
+  // x = -10
+  // y = -1x + 10
+  int i = 8, j = 15, l = 10;
+  int ik = i, jk = j, lk = l, k = 0;
+
+  for (; k < 50; k++) {
+    if (j >= i + 10 && i >= -10 && j <= -i + 10) {
+      printf("k=%d,\ti=%d,\tj=%d,\tl=%d\n", k, ik, jk, lk);
+      printf("Точка попала!");
+      return 0;
+    }
+    i = ((ik + jk) % (abs(min(jk - lk, lk - k))+1)-k) % 20 + 10;
+    j = max((ik + jk)/(2 + sign(jk*lk-ik*k)), (jk + lk)/(2 + sign(ik*jk - lk*k))) - 10;
+    l = max(ik, jk) * min(ik, lk) % 30;
+    ik = i; jk = j; lk = l;
+  }
+  printf("k=%d,\ti=%d,\tj=%d,\tl=%d\n", k, ik, jk, lk);
+  printf("Точка не попала!");
+  return 0;
+}
+/*
+k=0,	i=8,	j=15,	l=10
+k=1,	i=15,	j=-2,	l=0
+k=2,	i=10,	j=3,	l=0
+k=3,	i=9,	j=3,	l=0
+k=4,	i=7,	j=2,	l=0
+k=5,	i=10,	j=-1,	l=0
+k=6,	i=8,	j=-1,	l=0
+k=7,	i=4,	j=-3,	l=0
+k=8,	i=4,	j=-9,	l=0
+k=9,	i=-3,	j=-15,	l=0
+k=10,	i=-1,	j=-15,	l=9
+k=11,	i=4,	j=-16,	l=1
+k=12,	i=7,	j=-22,	l=4
+k=13,	i=3,	j=-25,	l=28
+k=14,	i=-5,	j=-7,	l=9
+k=15,	i=4,	j=-8,	l=25
+k=16,	i=-9,	j=7,	l=16
+ */
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAi/Informatics/Labs/Lab9$
+./main.exec
+k=16,	i=-9,	j=7,	l=16
+Точка попала!
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAi/Informatics/Labs/Lab9$

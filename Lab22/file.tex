@@ -1,0 +1,93 @@
+\documentclass[a5paper]{book}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[integrals]{wasysym} % integrals
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{soul}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+
+\usepackage{ragged2e} % выравнивание по ширине
+\justifying
+
+\pagenumbering{gobble} % удаляет номер страницы внизу страницы
+
+\newcommand{\eqdef}{{=\joinrel=}} % длинное "равно"
+
+\begin{document}
+
+% отступы от формул
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+
+\lhead{\textsl{\scriptsize 346}}
+\chead{\textsl{\scriptsize {\it Глава} 25}}
+\pagestyle{fancy}
+
+\fontdimen2\font=0.4em % расстояние между словами
+
+\noindent Следовательно, \begin{align*} \int\limits_a^b{f(x)\,dx}\;существует\;и = L. \end{align*}
+\indent \textbf{Теорема 369.} \textit{Каждая функция, непрерывная в} [\textit{a}, \textit{b}], \textit{интегрируема от a до b.}
+\\ \indent Д\kern+0.2em о\kern+0.2em к\kern+0.2em а\kern+0.2em з\kern+0.2em а\kern+0.2em т\kern+0.2em е\kern+0.2em л\kern+0.2em ь\kern+0.2em с\kern+0.2em т\kern+0.2em в\kern+0.2em о.
+Пусть $f(x)$ \textemdash \, функция, удовлетворяющая условию теоремы, и пусть задано $\delta > 0$. В силу теоремы 154, существует $\varepsilon > 0$ такое, что
+\begin{gather*}
+    |f(x) \, \textemdash \, f(\beta)| < \frac{\delta}{2(b \, \textemdash \, a)} \, при \; a \leqslant \alpha \leqslant b, \: a \leqslant \beta \leqslant b, 
+    \\ |\alpha \, \textemdash \, \beta| \leqslant \varepsilon.
+\end{gather*}
+Если, следовательно, каждое $e_v < \varepsilon $, то каждое $$ s_v \leqslant \frac{\delta}{2(b-a)} $$
+и
+$$ \sum es \leqslant \frac{\delta}{2(b-a)} \sum e \; \eqdef \; \frac{\delta}{2} < \delta.$$
+Тем самым выполнение условия Римана проверено (что, согласно теореме 368, в полном объёме даже не было необходимо). \vspace{2mm} \\
+\indent \textbf{Определение 85.}\textit{ Функция $f(x)$, определённая в \textnormal{[}\textit{a},\, \textit{b}\textnormal{]}, называется там монотонной, если для $ a \leqslant \alpha < \beta \leqslant b$ всегда}
+$$ f(\alpha) \leqslant f(\beta), $$
+\textit{либо всегда}
+$$ f(\alpha) \geqslant f(\beta). $$
+\textit{В первом случае $f(x)$ называют монотонно не убывающей, во втором \textemdash \, монотонно не возрастающей.} \\
+\indent (Определения 71 и 72 исключают знак равенства между $f(\alpha)$ и $f(\beta)$). \vspace{2mm} \\
+\indent \textbf{Теорема 370.}\textit{ Каждая монотонная в \textnormal{[}$a, \; b$\textnormal{]} функция интегрируема от $a$ до $b$.}
+
+\newpage
+
+\lhead{}
+\chead{\textsl{\scriptsize {\it Понятие определённого интеграла}}}
+\rhead{\textsl{\scriptsize 347}}
+\pagestyle{fancy}
+
+\indent Д\kern+0.2em о\kern+0.2em к\kern+0.2em а\kern+0.2em з\kern+0.2em а\kern+0.2em т\kern+0.2em е\kern+0.2em л\kern+0.2em ь\kern+0.2em с\kern+0.2em т\kern+0.2em в\kern+0.2em о.
+Пусть $f(x)$ \textemdash \, функция, удовлетворяющая условию теоремы. В первом случае определения 85 имеем
+$$ l_v \eqdef f(a_v), \kern+0.7em \lambda \eqdef f(a_{v-1}), \kern+0.7em s_v \eqdef f(a_v) \, \textemdash \, f(a_{v-1}),$$
+и для $e_v < \varepsilon$ получаем
+$$ \sum es \leqslant \varepsilon \sum s \; \eqdef \; \varepsilon(f(b) \, \textemdash \, f(a)). $$
+\indent Во втором случае
+$$ l_v \eqdef f(a_{v-1}), \kern+0.7em \lambda \eqdef f(a_v), \kern+0.7em s_v \eqdef f(a_{v-1}) \, \textemdash \, f(a_v),$$
+и для $e_v < \varepsilon$ получаем
+$$ \sum es \leqslant \varepsilon \sum s \; \eqdef \; \varepsilon(f(a) \, \textemdash \, f(b)). $$
+Таким образом, каково бы ни было $\delta > 0$, если $e_v < \varepsilon$, где
+$$ \varepsilon \, \eqdef \, \frac{\delta}{|f(b) \, \textemdash \, f(a)| + 1}, $$
+то имеем
+$$ \sum es < \delta.$$ 
+\indent \textbf{Теорема 371.}\textit{ Каждая ограниченная в \textnormal{[}a,\, b\textnormal{]} функция, для которой число мест разрыва внутри этого интервала не бексонечно, интегрируема от a до b.}
+\\ \indent Д\kern+0.2em о\kern+0.2em к\kern+0.2em а\kern+0.2em з\kern+0.2em а\kern+0.2em т\kern+0.2em е\kern+0.2em л\kern+0.2em ь\kern+0.2em с\kern+0.2em т\kern+0.2em в\kern+0.2em о.
+Пусть $f(x)$ \textemdash \, функция, удовлетворяющая условию теоремы, и
+$$ |f(x)| < c \; \; в \; \; [a,\;\; b].$$
+Обозначим $a, b$ и возможные внутренние места разрыва функции $f(x)$ через
+$$\eta_k, \;\; 0 \leqslant k \leqslant m,\; k \;\; целое, $$
+так, чтобы 
+\begin{gather*}
+    \eta_{k-1} < \eta_k \;\; при \;\; 1 \leqslant k \leqslant m,
+    \\ \eta_0 \, \eqdef \, a, \; \; \eta_m \, \eqdef \, b
+\end{gather*}
+\indent Пусть $\delta > 0$. Положим 
+\begin{gather*}
+    \underset{1 \, \leqslant \, k \, \leqslant \, m}{\textnormal{Min}}(\eta_k \textemdash \, \eta_{k-1}) \eqdef \zeta,
+    \\ \gamma \; \eqdef \; \textnormal{Min}\left( \frac{\delta}{8mc}, \; \frac{\zeta}{3}\right).
+\end{gather*}
+
+\end{document}

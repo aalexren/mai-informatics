@@ -1,0 +1,83 @@
+Script started on Fri Nov 29 14:00:01 2019
+[?1034h[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+./main.exec[K[K[K[K[K[K[K[K[K[K[Kcat mia[K[Kain..c[K[Kc
+#include <stdio.h>
+
+int main() {
+  long x, cx;
+  printf("Введите число\n");
+  scanf("%ld", &x);
+  while (x < 100 || x > 1000000000) {
+    printf("Введите корректное число\n");
+    scanf("%ld", &x); 
+  }
+  cx = x; x = 0;
+  long by3 = 0, rem1by3 = 0, rem2by3 = 0;
+  
+  while (cx > 0) { x = x * 10 + cx % 10; cx /= 10; }
+  
+  while (x > 0) {
+    int rem = x % 10;
+    x /= 10;
+    if (rem % 3 == 0) {
+      by3 = by3 * 10 + rem;
+    }
+    else if (rem % 3 == 1) {
+      rem1by3 = rem1by3 * 10 + rem;
+    }
+    else if (rem % 3 == 2) {
+      rem2by3 = rem2by3 * 10 + rem;
+    }
+  }
+  
+  long sum = by3 + rem1by3 + rem2by3;
+  printf("%ld, %ld, %ld, %ld\n", by3, rem1by3, rem2by3, sum);
+  
+  return 0;
+}
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+gcc main.c -o main.exe
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+./main.exe
+Введите число
+623547254723654275634765                        0909000909          101010101111
+Введите корректное число
+2000
+0, 0, 2, 2
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+./main[K[K[K[K[K[K./main.exe
+Введите число
+20000
+0, 0, 2, 2
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+./main.exe
+Введите число
+87554023
+3, 74, 8552, 8629
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+./main.exe
+Введите число
+1111   444888   7777
+0, 14447777, 0, 14447777
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+./main.exe
+Введите число
+26 58258
+0, 0, 258258, 258258
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+./main.exe
+Введите число
+3690
+369, 0, 0, 369
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+./main.exe
+Введите число
+1234567890
+Введите корректное число
+^[[A    123456789
+369, 147, 258, 774
+[33mkot_mapku3[35m@[34mafrodita:[32m~/Yandex.Disk.localized/Mai/Informatics/Labs/Lab12[31m$[m 
+script[K[K[K[K[K[Kexit
+exit
+
+Script done on Fri Nov 29 14:03:05 2019

@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libstack_dynamic.c.a  CMakeFiles/stack_dynamic.c.dir/stack_static.c.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libstack_dynamic.c.a

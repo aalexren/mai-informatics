@@ -1,0 +1,84 @@
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat head.txt
+***********************************************
+*          Лабораторная работа №11            *
+*     Обработка последовательности литер      *
+*         входного текстового файла.          *
+*   Простейшие приёмы лексического анализа.   *
+*       Диаграммы состояний и переходов.      *
+*     Выполнил студент группы М8О-104Б-19     *
+*         Черница Артём Александрович         *
+***********************************************
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat main.c
+#include <stdio.h>
+
+#define space ' '
+#define comma ','
+#define tab '\t'
+#define ends '\0'
+#define end EOF
+#define nline '\n'
+
+int main() {
+  char c = ' ';
+  int counter = 0, words = 0;
+
+  while (c != end) {
+    c = getchar();
+    if (c != space && c != comma && c != tab && c != ends && c != end && c != nline) {
+      counter++;
+    }
+    else {
+      if (counter >= 3) words++;
+      counter = 0;
+    }
+  }
+
+  printf("Количество слов не менее 3-х символов = %d\n", words);
+  return 0;
+}
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+gcc main.c -o main.exe
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat test.txt
+	vector, !#_, pop, vector
+ hks, min, max )(**"", vgh, kok
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+./main.exe < test.txt
+Количество слов не менее 3-х символов = 10
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat test1.txt
+xa xc
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+./main.exe < test1.txt
+Количество слов не менее 3-х символов = 0
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat test2.txt
+1 a	; , c v,,, \0 677674368
+~23546 %%% gfg apple juice,788682347
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+./main.exe < test2.txt
+Количество слов не менее 3-х символов = 7
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat test3.txt
+aghaggahgaah
+
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+./main.exe < test3.txt
+Количество слов не менее 3-х символов = 1
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat test4.txt
+aaaa
+vvvv
+bbbb
+$$$$
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+./main.exe < test4.txt
+Количество слов не менее 3-х символов = 4
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat test5.txt
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+./main.exe < test5.txt
+Количество слов не менее 3-х символов = 0
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$

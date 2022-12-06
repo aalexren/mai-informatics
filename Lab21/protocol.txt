@@ -1,0 +1,252 @@
+198097@client17:~/Lab21$ cat head.txt 
+****************************************
+*                                      *
+*       Лабораторная работа №21        *
+* Программирование на интерпретируемых *
+*         командных языках             *
+*     Выполнил студент группы 104      *
+*     Черница Артём Александрович      *
+*                                      *
+****************************************
+198097@client17:~/Lab21$ cat script.sh 
+#!/bin/bash
+
+for param in $@
+do
+case $param in
+--debug) echo "Debug mode is on..."; set -x; shift; break;; # debug on
+-h) echo "./script.sh [--debug] <path to directory> <file size>"; exit;break;;
+*) ;;
+esac
+done
+
+if [ -n "$1" ]
+then
+path=$1
+else
+echo "Введите путь каталога, где надо заменить суффиксы файлов:"
+read path
+fi
+while [ ! -d $path ]
+do
+echo "Директории $path не существует, попробуйте снова:"
+read path
+done
+
+if [ -n "$2" ]
+then
+size=$2
+else
+echo "Введите размер, файлы с размером меньше которого будут переименованы:"
+echo "(например: 1000c или 100k или 10M или 1G, по умолчанию поиск в байтах)"
+read size
+fi
+while [[ ! "$size" =~ ^[1-9]{1}[0-9]*[ckMG]?$ ]]; do
+    echo "Вы ввели не число, попробуйте снова:"
+    read size
+done
+
+size_in="${size: -1}"
+case $size_in in
+    c|k|M|G) size=${size//[a-zA-Z]/};;
+    *) size_in=c;;
+esac
+
+files=$(find $path -maxdepth 1 -size "-${size}${size_in}" -name "[^.]*" -type f)
+for i in $files
+do
+    if [ ! -d $i ]
+    then
+        fl=$(basename $i); fl=${fl:0:1};
+        name="${i%.*}.$fl"
+        echo "$(du -sh $i) -> $name"
+        mv -f $i $name
+    fi
+done
+
+set +x # debug off
+198097@client17:~/Lab21$ cd kek
+198097@client17:~/Lab21/kek$ ls -lah
+total 140M
+drwxr-xr-x 2 parallels parallels 4.0K Mar 29 21:27 .
+drwxr-xr-x 3 parallels parallels 4.0K Mar 29 21:19 ..
+-rw-r--r-- 1 parallels parallels  12M Mar 25 00:00 cdZe.mkv
+-rw-r--r-- 1 parallels parallels  11M Mar 25 00:00 DyTy.mp4
+-rwxr-xr-x 1 parallels parallels 3.2K Mar 29 21:04 generate.sh
+-rw-r--r-- 1 parallels parallels    0 Mar 29 21:27 .hidden
+-rw-r--r-- 1 parallels parallels 4.8M Mar 25 00:00 Lynt.wmv
+-rw-r--r-- 1 parallels parallels  31M Mar 25 00:00 NKfp.avi
+-rw-r--r-- 1 parallels parallels 7.5M Mar 25 00:00 OGVs.flv
+-rw-r--r-- 1 parallels parallels  23M Mar 25 00:00 tzMi.3gp
+-rw-r--r-- 1 parallels parallels  11M Mar 25 00:00 uhPy.mov
+-rw-r--r-- 1 parallels parallels  17M Mar 25 00:00 UXkA.vob
+-rw-r--r-- 1 parallels parallels  26M Mar 25 00:00 yPDm.swf
+198097@client17:~/Lab21/kek$ cd ..
+198097@client17:~/Lab21$ ./script.sh -h
+./script.sh [--debug] <path to directory> <file size>
+198097@client17:~/Lab21$ ./script.sh kek 10M
+7.5M	kek/OGVs.flv -> kek/OGVs.O
+4.0K	kek/generate.sh -> kek/generate.g
+4.8M	kek/Lynt.wmv -> kek/Lynt.L
+198097@client17:~/Lab21/kek$ cd ..
+198097@client17:~/Lab21$ rm -rf kek
+198097@client17:~/Lab21$ mkdir kek
+198097@client17:~/Lab21$ cat generate.sh
+#!/bin/bash
+
+SUFFIXES="3gp avi flv mkv mov mp4 swf vob wmv";
+
+##
+## Количество дней.
+##
+N="4";
+
+NUMBER_REGEXP='^[0-9]+$';
+
+DAYS_AGO=$(date "+%Y-%m-%d" -d "${N} day ago");
+
+for SUFFIX in $SUFFIXES ; do
+    ##
+    ## Генерируем один случайный мегабайт
+    ##
+    RANDON_BYTES=$( cat /dev/urandom | dd bs=256kB count=17 2> /dev/null);
+    ##
+    ## На основании этого же мегабайта, мы соорудим случайное имя файла.
+    ##
+    RANDON_NAME=$(echo ${RANDON_BYTES} | tr -dc 'A-Za-z' | fold -w 4 | head -n 1 )
+
+    if [ -z "${RANDON_NAME}" ]; then
+        ##
+        ## Если выделить случайную строку нам не удалось,
+        ## то давайте подставлять наносекунды.
+        ## `date +%N` как раз их и вернет.
+        ##
+        RANDON_NAME=$(date +%N);
+    fi;
+    FILENAME="${RANDON_NAME}.${SUFFIX}"
+
+    ##
+    ## Записываем случайные байты в файл со случайным именем.
+    ##
+    dd if=/dev/urandom of="${FILENAME}" bs=1024 count=$(( RANDOM + 1024 ))
+
+    ##
+    ## Выставляем файлу дату в прошлом.
+    ##
+    touch -d "${DAYS_AGO}" "${FILENAME}"
+done;
+198097@client17:~/Lab21$ cp generate.sh kek/
+198097@client17:~/Lab21$ cd kek
+198097@client17:~/Lab21/kek$ ls
+generate.sh
+198097@client17:~/Lab21/kek$ ./generate.sh 
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+4062+0 records in
+4062+0 records out
+4159488 bytes (4.2 MB, 4.0 MiB) copied, 0.0509849 s, 81.6 MB/s
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+17789+0 records in
+17789+0 records out
+18215936 bytes (18 MB, 17 MiB) copied, 0.242057 s, 75.3 MB/s
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+2123+0 records in
+2123+0 records out
+2173952 bytes (2.2 MB, 2.1 MiB) copied, 0.0310913 s, 69.9 MB/s
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+26336+0 records in
+26336+0 records out
+26968064 bytes (27 MB, 26 MiB) copied, 0.357582 s, 75.4 MB/s
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+30882+0 records in
+30882+0 records out
+31623168 bytes (32 MB, 30 MiB) copied, 0.511574 s, 61.8 MB/s
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+20891+0 records in
+20891+0 records out
+21392384 bytes (21 MB, 20 MiB) copied, 0.249695 s, 85.7 MB/s
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+16036+0 records in
+16036+0 records out
+16420864 bytes (16 MB, 16 MiB) copied, 0.184753 s, 88.9 MB/s
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+16732+0 records in
+16732+0 records out
+17133568 bytes (17 MB, 16 MiB) copied, 0.33572 s, 51.0 MB/s
+./generate.sh: line 57: warning: command substitution: ignored null byte in input
+12708+0 records in
+12708+0 records out
+13012992 bytes (13 MB, 12 MiB) copied, 0.159913 s, 81.4 MB/s
+198097@client17:~/Lab21/kek$ ls -lh
+total 145M
+-rw-r--r-- 1 parallels parallels 2.1M Mar 25 00:00 BVUt.flv
+-rwxr-xr-x 1 parallels parallels 3.2K Mar 29 21:31 generate.sh
+-rw-r--r-- 1 parallels parallels  17M Mar 25 00:00 QBgg.vob
+-rw-r--r-- 1 parallels parallels  21M Mar 25 00:00 sBKk.mp4
+-rw-r--r-- 1 parallels parallels 4.0M Mar 25 00:00 slvX.3gp
+-rw-r--r-- 1 parallels parallels  26M Mar 25 00:00 tstV.mkv
+-rw-r--r-- 1 parallels parallels  18M Mar 25 00:00 UsQi.avi
+-rw-r--r-- 1 parallels parallels  16M Mar 25 00:00 UXRA.swf
+-rw-r--r-- 1 parallels parallels  13M Mar 25 00:00 vGoO.wmv
+-rw-r--r-- 1 parallels parallels  31M Mar 25 00:00 Yemc.mov
+198097@client17:~/Lab21/kek$ cd ..
+198097@client17:~/Lab21$ ./script.sh --debug kek 5M
+Debug mode is on...
++ shift
++ break
++ '[' -n kek ']'
++ path=kek
++ '[' '!' -d kek ']'
++ '[' -n 5M ']'
++ size=5M
++ [[ ! 5M =~ ^[1-9]{1}[0-9]*[ckMG]?$ ]]
++ size_in=M
++ case $size_in in
++ size=5
+++ find kek -maxdepth 1 -size -5M -name '[^.]*' -type f
++ files='kek/slvX.3gp
+kek/BVUt.flv
+kek/generate.sh'
++ for i in $files
++ '[' '!' -d kek/slvX.3gp ']'
+++ basename kek/slvX.3gp
++ fl=slvX.3gp
++ fl=s
++ name=kek/slvX.s
+++ du -sh kek/slvX.3gp
++ echo '4.0M	kek/slvX.3gp -> kek/slvX.s'
+4.0M	kek/slvX.3gp -> kek/slvX.s
++ mv -f kek/slvX.3gp kek/slvX.s
++ for i in $files
++ '[' '!' -d kek/BVUt.flv ']'
+++ basename kek/BVUt.flv
++ fl=BVUt.flv
++ fl=B
++ name=kek/BVUt.B
+++ du -sh kek/BVUt.flv
++ echo '2.1M	kek/BVUt.flv -> kek/BVUt.B'
+2.1M	kek/BVUt.flv -> kek/BVUt.B
++ mv -f kek/BVUt.flv kek/BVUt.B
++ for i in $files
++ '[' '!' -d kek/generate.sh ']'
+++ basename kek/generate.sh
++ fl=generate.sh
++ fl=g
++ name=kek/generate.g
+++ du -sh kek/generate.sh
++ echo '4.0K	kek/generate.sh -> kek/generate.g'
+4.0K	kek/generate.sh -> kek/generate.g
++ mv -f kek/generate.sh kek/generate.g
++ set +x
+198097@client17:~/Lab21$ ls -lh kek
+total 145M
+-rw-r--r-- 1 parallels parallels 2.1M Mar 25 00:00 BVUt.B
+-rwxr-xr-x 1 parallels parallels 3.2K Mar 29 21:31 generate.g
+-rw-r--r-- 1 parallels parallels  17M Mar 25 00:00 QBgg.vob
+-rw-r--r-- 1 parallels parallels  21M Mar 25 00:00 sBKk.mp4
+-rw-r--r-- 1 parallels parallels 4.0M Mar 25 00:00 slvX.s
+-rw-r--r-- 1 parallels parallels  26M Mar 25 00:00 tstV.mkv
+-rw-r--r-- 1 parallels parallels  18M Mar 25 00:00 UsQi.avi
+-rw-r--r-- 1 parallels parallels  16M Mar 25 00:00 UXRA.swf
+-rw-r--r-- 1 parallels parallels  13M Mar 25 00:00 vGoO.wmv
+-rw-r--r-- 1 parallels parallels  31M Mar 25 00:00 Yemc.mov
+198097@client17:~/Lab21$ 

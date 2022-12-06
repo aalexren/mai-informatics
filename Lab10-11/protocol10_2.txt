@@ -1,0 +1,169 @@
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ cat head10.txt
+***********************************************
+*          Лабораторная работа №10            *
+*  Отладчик системы программирования ОС Unix  *
+*     Выполнил студент группы М8О-104Б-19     *
+*         Черница Артём Александрович         *
+***********************************************
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ cat lab10.c
+#include <stdio.h>
+
+#define space ' '
+#define comma ','
+#define tab '\t'
+#define ends '\0'
+#define end EOF
+
+int main() {
+  char c = ' ';
+  int flag = 0;
+  int counter = 0, words = 0;
+
+  while (c != end) {
+    c = getchar();
+    if (c != space && c != comma && c != tab && c != ends && c != end) {
+      counter++;
+    }
+    else {
+      if (counter >= 3) words++;
+      counter = 0;
+    }
+  }
+
+  printf("\nКоличество слов не менее 3-х символов = %d\n", words);
+  return 0;
+}
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ gcc -g lab10.c -o lab10.exe
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ ./lab10.exexa xcКоличество слов не менее 3-х символов = 1
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ gdb lab10.exe
+GNU gdb (Ubuntu 8.1-0ubuntu3.1) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from lab10.exe...done.
+(gdb) list 15
+10	  char c = ' ';
+11	  int counter = 0, words = 0;
+12	
+13	  while (c != end) {
+14	    c = getchar();
+15	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+16	      counter++;
+17	    }
+18	    else {
+19	      if (counter >= 3) words++;
+(gdb) b 15
+Breakpoint 1 at 0x6ae: file lab10.c, line 15.
+(gdb) run
+Starting program: /media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11/lab10.exe 
+xa xc
+
+Breakpoint 1, main () at lab10.c:15
+15	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) info locals
+c = 120 'x'
+counter = 0
+words = 0
+(gdb) s
+16	      counter++;
+(gdb) 
+13	  while (c != end) {
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at lab10.c:15
+15	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) p c
+$1 = 97 'a'
+(gdb) list break
+Function "break" not defined.
+(gdb) info breakpoints 
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00005555555546ae in main at lab10.c:15
+	breakpoint already hit 2 times
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at lab10.c:15
+15	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) info locals
+c = 32 ' '
+counter = 2
+words = 0
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at lab10.c:15
+15	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) p words
+$2 = 0
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at lab10.c:15
+15	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:15
+15	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) dis 1
+(gdb) b 24
+Breakpoint 2 at 0x5555555546e9: file lab10.c, line 24.
+(gdb) c
+Continuing.
+
+Breakpoint 2, main () at lab10.c:24
+24	  printf("Количество слов не менее 3-х символов = %d\n", words);
+(gdb) info locals
+c = -1 '\377'
+counter = 0
+words = 1
+(gdb) n
+Количество слов не менее 3-х символов = 1
+25	  return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 4409) exited normally]
+(gdb)quit
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ vi lab10.c
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ cat lab10.c
+#include <stdio.h>
+
+#define space ' '
+#define comma ','
+#define tab '\t'
+#define ends '\0'
+#define end EOF
+#define nline '\n'
+
+int main() {
+  char c = ' ';
+  int counter = 0, words = 0;
+
+  while (c != end) {
+    c = getchar();
+    if (c != space && c != comma && c != tab && c != ends && c != end && c != nline) {
+      counter++;
+    }
+    else {
+      if (counter >= 3) words++;
+      counter = 0;
+    }
+  }
+  
+  printf("Количество слов не менее 3-х символов = %d\n", words);
+  return 0;
+}
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ gcc lab10.c -o lab10.exe
+parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$ ./main.exe xa xcКоличество слов не менее 3-х символов = 0parallels@parallels-Parallels-Virtual-Platform:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$

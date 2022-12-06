@@ -1,0 +1,226 @@
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat head10.txt
+***********************************************
+*          Лабораторная работа №10            *
+*  Отладчик системы программирования ОС Unix  *
+*     Выполнил студент группы М8О-104Б-19     *
+*         Черница Артём Александрович         *
+***********************************************
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat lab10.c
+#include <stdio.h>
+
+#define space ' '
+#define comma ','
+#define tab '\t'
+#define ends '\0'
+#define end EOF
+
+int main() {
+  char c = ' ';
+  int flag = 0;
+  int counter = 0, words = 0;
+
+  while (c != end) {
+    c = getchar();
+    if (c != space && c != comma && c != tab && c != ends && c != end) {
+      counter++;
+    }
+    else {
+      if (counter >= 3) words++;
+      counter = 0;
+    }
+  }
+
+  printf("\nКоличество слов не менее 3-х символов = %d\n", words);
+  return 0;
+}
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+gcc -g lab10.c -o lab10.exe
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+./lab10.exe 
+aaaa
+vvvv
+aaaa
+
+Количество слов не менее 3-х символов = 1
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+gdb lab10.exe 
+GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from lab10.exe...done.
+(gdb) b 16
+Breakpoint 1 at 0x6b5: file lab10.c, line 16.
+(gdb) list 16
+11	  int flag = 0;
+12	  int counter = 0, words = 0;
+13	
+14	  while (c != end) {
+15	    c = getchar();
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+17	      counter++;
+18	    }
+19	    else {
+20	      if (counter >= 3) words++;
+(gdb) run
+Starting program: /Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11/lab10.exe 
+aaaa
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) p c
+$1 = 97 'a'
+(gdb) info locals
+c = 97 'a'
+flag = 0
+counter = 0
+words = 0
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+vvvv
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+vvv   
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) 
+Continuing.
+
+Breakpoint 1, main () at lab10.c:16
+16	    if (c != space && c != comma && c != tab && c != ends && c != end) {
+(gdb) info locals
+c = -1 '\377'
+flag = 0
+counter = 14
+words = 0
+(gdb) s
+20	      if (counter >= 3) words++;
+(gdb) 
+21	      counter = 0;
+(gdb) p words
+$2 = 1
+(gdb) s
+14	  while (c != end) {
+(gdb) 
+25	  printf("\nКоличество слов не менее 3-х символов = %d\n", words);
+(gdb) p c
+$3 = -1 '\377'
+(gdb) c
+Continuing.
+
+Количество слов не менее 3-х символов = 1
+[Inferior 1 (process 10708) exited normally]
+(gdb) quit
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+vi lab10.c
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+cat lab10.c
+#include <stdio.h>
+
+#define space ' '
+#define comma ','
+#define tab '\t'
+#define ends '\0'
+#define end EOF
+#define nline '\n'
+
+int main() {
+  char c = ' ';
+  int flag = 0;
+  int counter = 0, words = 0;
+
+  while (c != end) {
+    c = getchar();
+    if (c != space && c != comma && c != tab && c != ends && c != end && c != nline) {
+      counter++;
+    }
+    else {
+      if (counter >= 3) words++;
+      counter = 0;
+    }
+  }
+
+  printf("\nКоличество слов не менее 3-х символов = %d\n", words);
+  return 0;
+}
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+gcc -g lab10.c -o lab10.exe
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$
+./lab10.exe 
+aaa
+vvvv
+vvvv
+
+Количество слов не менее 3-х символов = 3
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab10-11$

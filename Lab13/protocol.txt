@@ -1,0 +1,208 @@
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+cat head.txt
+***********************************
+*                                 *
+*    Лабораторная работа №13      *
+*  Множества. Одномерные массивы. *
+*        Заголовочные файлы.      *
+*  Выполнил студент группы 104    *
+*  Черница Артём Александрович    *
+*                                 *
+***********************************
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+cat lab13.c
+#include <stdio.h>
+#include "set.h"
+
+char vowels[] = "AEIOUY";
+char svowels[N];
+char sconsonants[N];
+char word[256], sword[N];
+
+char to_upper(char c) {
+    if (letter(c) && c >= a) return c - a + A;
+
+    return c;
+}
+
+int main() {
+
+    char c; create_set(vowels, svowels);
+    int index = -1; int ans = 0, cons = 0;
+
+    for (char i = A; i <= Z; i++) {
+        if (!set_include(i, svowels)) set_insert(i, sconsonants);
+    }
+
+    while ((c = getchar()) != EOF) {
+        if (letter(c)) {
+            word[++index] = c;
+            c = to_upper(c);
+            if (set_include(c, sconsonants)) cons++;
+        }
+        else if (index > -1) {
+            word[++index] = '\0';
+            if (cons == 1) {
+                printf("Слово содержащее ровно одну согласную: %s\n", word);
+                ans++;
+            }
+            index = -1; cons = 0;
+            for (int i = 0; i < 256; i++)
+                word[i] = '\0';
+        }
+    }
+    printf("Всего слов: %d\n", ans);
+
+    return 0;
+}
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+cat set.h
+#define N 26
+
+char A='A';
+char Z='Z';
+char a='a';
+char z='z';
+
+
+int letter(char c) {
+  return (c >= a && c <= z) || (c >= A && c <= Z);
+}
+
+
+int create_set(char w[], char s[]) {
+  char c;
+  for(int i = 0; i < N; i++) s[i] = 0;
+  for(int i = 0; i < N; i++) {
+    c = w[i];
+    if (letter(c)) s[c-A] = 1;
+  }
+
+  return 0;
+}
+
+int display_set(char s[]) {
+  printf("\n");
+  for (int i = 0; i < N; i++) printf("%c", i + A); printf("\n");
+  for (int i = 0; i < N; i++) printf("%d", s[i]); printf("\n");
+
+  return 0;
+}
+
+int set_insert(char c, char s[]) {
+  s[c-A] = 1;
+
+  return 0;
+}
+
+int set_include(char c, char s[]) {
+  if (s[c-A] > 0) return 1;
+
+  return 0;
+}
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+gcc lab13.c -o lab13.exe
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+cat test.txt
+head smoke| carpet, flat.Domes,House,Aloha;5Pitch`
+Alooooooooa irooa,maoyu, uraru, urauao, Abluoe
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+./lab13.exe < test.txt
+Слово содержащее ровно одну согласную: Alooooooooa
+Слово содержащее ровно одну согласную: irooa
+Слово содержащее ровно одну согласную: maoyu
+Слово содержащее ровно одну согласную: urauao
+Всего слов: 4
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+cat test2.txt
+Zaya, prishli mne pismo, ya skuchau po tebe.
+Bez problem, zavtra vse budet! Ura!!! Ura! Uraaa!!!
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+./lab13.exe < test2.txt
+Слово содержащее ровно одну согласную: Zaya
+Слово содержащее ровно одну согласную: po
+Слово содержащее ровно одну согласную: Ura
+Слово содержащее ровно одну согласную: Ura
+Слово содержащее ровно одну согласную: Uraaa
+Всего слов: 5
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+cat test3.txt
+#include <stdio.h>
+#include "set.h"
+
+char vowels[] = "AEIOUY";
+char svowels[N];
+char sconsonants[N];
+char word[256], sword[N];
+
+char to_upper(char c) {
+    if (letter(c) && c >= a) return c - a + A;
+
+    return c;
+}
+
+int main() {
+
+    char c; create_set(vowels, svowels);
+    int index = -1; int ans = 0, cons = 0;
+
+    for (char i = A; i <= Z; i++) {
+        if (!set_include(i, svowels)) set_insert(i, sconsonants);
+    }
+
+    while ((c = getchar()) != EOF) {
+        if (letter(c)) {
+            word[++index] = c;
+            c = to_upper(c);
+            if (set_include(c, sconsonants)) cons++;
+        }
+        else if (index > -1) {
+            word[++index] = '\0';
+            if (cons == 1) {
+                printf("Слово содержащее ровно одну согласную: %s\n", word);
+                ans++;
+            }
+            index = -1; cons = 0;
+            for (int i = 0; i < 256; i++)
+                word[i] = '\0';
+        }
+    }
+    printf("Всего слов: %d\n", ans);
+
+    return 0;
+}
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$
+./lab13.exe < test3.txt
+Слово содержащее ровно одну согласную: h
+Слово содержащее ровно одну согласную: h
+Слово содержащее ровно одну согласную: N
+Слово содержащее ровно одну согласную: N
+Слово содержащее ровно одну согласную: N
+Слово содержащее ровно одну согласную: to
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: if
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: Z
+Слово содержащее ровно одну согласную: if
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: EOF
+Слово содержащее ровно одну согласную: if
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: to
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: if
+Слово содержащее ровно одну согласную: c
+Слово содержащее ровно одну согласную: if
+Слово содержащее ровно одну согласную: if
+Слово содержащее ровно одну согласную: s
+Слово содержащее ровно одну согласную: n
+Слово содержащее ровно одну согласную: d
+Слово содержащее ровно одну согласную: n
+Всего слов: 31
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13$

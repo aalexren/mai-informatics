@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab26/main.c
+stdio.h
+-
+time.h
+-
+stdlib.h
+-
+stack_dynamic.h
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab26/stack_dynamic.h
+
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab26/stack_dynamic.c
+stack_dynamic.h
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab26/stack_dynamic.h
+stddef.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab26/stack_dynamic.h
+

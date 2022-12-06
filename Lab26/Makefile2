@@ -1,0 +1,8 @@
+CCFLAGS = -g -Wall -std=c99
+
+main: main.o stack_dynamic.o
+	gcc -o main main.o stack_dynamic.o
+main.o: main.c stack_dynamic.h
+	gcc -c $(CCFLAGS) main.c
+stack_dynamic.o: stack_dynamic.c stack_dynamic.h
+	gcc -c $(CCFLAGS) stack_dynamic.c

@@ -1,0 +1,2 @@
+	vector, !#_, pop, vector
+ hks, min, max )(**"", vgh, kok

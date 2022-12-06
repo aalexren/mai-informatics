@@ -1,0 +1,82 @@
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+cat head.txt
+***************************************
+*                                     *
+*       Лабораторная работа №8        *
+* Системы программирования на языке C *
+*     Выполнил студент группы 104     *
+*     Черница Артём Александрович     *
+*                                     *
+***************************************
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+cat main.c
+#include <stdio.h>
+
+int main() {
+
+  printf("Hello, Charles!/n");
+  int a = 10101; int res = 0; int b = 1;
+
+  while (a >= 0) {
+    res = res + a%10 * b;
+    b *= 2;
+    a /= 10;
+  }
+
+  printf("%d", res);
+
+  return 0;
+
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+gcc -g main.c -o main.exec
+main.c:17:1: error: expected '}'
+^
+main.c:3:12: note: to match this '{'
+int main() {
+           ^
+1 error generated.
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+vi main.c
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+gcc -g main.c -o main.exec
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+./main.exec
+^C
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+vi main.c
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+sed -n 8p main.c
+  while (a >= 0) {
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+vi main.c
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+gcc -g main.c -o main.exec
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+./main.exec
+Hello, Charles!/n21kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+vi main.c
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+gcc -g -v main.c -o main.exec
+Apple clang version 11.0.0 (clang-1100.0.33.8)
+Target: x86_64-apple-darwin19.0.0
+Thread model: posix
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name main.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debug-info-kind=standalone -dwarf-version=4 -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 512.4 -v -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/11.0.0 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdebug-compilation-dir /Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8 -ferror-limit 19 -fmessage-length 90 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fmax-type-align=16 -fdiagnostics-show-option -fcolor-diagnostics -o /var/folders/95/wv9_srf55hn60ykzhqxyvp1m0000gn/T/main-329986.o -x c main.c
+clang -cc1 version 11.0.0 (clang-1100.0.33.8) default target x86_64-apple-darwin19.0.0
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/local/include
+ /Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include
+ /Library/Developer/CommandLineTools/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -no_deduplicate -dynamic -arch x86_64 -macosx_version_min 10.15.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -o main.exec /var/folders/95/wv9_srf55hn60ykzhqxyvp1m0000gn/T/main-329986.o -L/usr/local/lib -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a
+ "/Library/Developer/CommandLineTools/usr/bin/dsymutil" -o main.exec.dSYM main.exec
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$
+./main.exec
+Hello, Charles!
+21
+kot_mapku3@afrodita:~/Yandex.Disk.localized/MAI/Informatics/Labs/Lab8$

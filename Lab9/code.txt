@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int max(int a, int b) {
+  return a > b ? a : b;
+}
+
+int min(int a, int b) {
+  return a < b ? a : b;
+}
+
+int abs(int a) {
+  return a < 0 ? -a : a;
+}
+
+int sign(int a) {
+  return a < 0 ? -1 : a > 0 ? 1 : 0;
+}
+
+int main() {
+  // triangle (-10, 0), (0, 10), (-10, 20)
+  // y = x + 10
+  // x = -10
+  // y = -1x + 10
+  int i = 8, j = 15, l = 10;
+  int ik = i, jk = j, lk = l, k = 0;
+
+  for (; k < 50; k++) {
+    if (j >= i + 10 && i >= -10 && j <= -i + 10) {
+      printf("k=%d,\ti=%d,\tj=%d,\tl=%d\n", k, ik, jk, lk);
+      printf("Точка попала!");
+      return 0;
+    }
+    i = ((ik + jk) % (abs(min(jk - lk, lk - k))+1)-k) % 20 + 10;
+    j = max((ik + jk)/(2 + sign(jk*lk-ik*k)), (jk + lk)/(2 + sign(ik*jk - lk*k))) - 10;
+    l = max(ik, jk) * min(ik, lk) % 30;
+    ik = i; jk = j; lk = l;
+  }
+  printf("k=%d,\ti=%d,\tj=%d,\tl=%d\n", k, ik, jk, lk);
+  printf("Точка не попала!");
+  return 0;
+}

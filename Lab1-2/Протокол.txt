@@ -1,0 +1,691 @@
+198097@client05:~$ cat > head.txt
+****************************
+* Лабораторная работа №2   *
+* Основные утилиты ОС UNIX *
+*                          *
+* выполнил студент группы  *
+*            104           *
+* Черница Артём Александрович *
+****************************
+198097@client05:~$ ды
+^C
+198097@client05:~$ ^C
+198097@client05:~$ ls
+Desktop    Downloads  Music     Public  Templates
+Documents  head.txt   Pictures  scr.sh  Videos
+198097@client05:~$ vi head.txt 
+198097@client05:~$ clear
+
+198097@client05:~$ cat head.txt
+*******************************
+*   Лабораторная работа №2    *
+*   Основные утилиты ОС UNIX  *
+*                             *
+*  выполнил студент группы    *
+*            104              *
+* Черница Артём Александрович *
+*******************************
+198097@client05:~$ ls
+Desktop    Downloads  Music     Public  Templates
+Documents  head.txt   Pictures  scr.sh  Videos
+198097@client05:~$ ls -l
+total 40
+drwxr-xr-x 2 198097 198097 4096 сен  3 17:06 Desktop
+drwxr-xr-x 2 198097 198097 4096 сен  3 17:06 Documents
+drwxr-xr-x 3 198097 198097 4096 сен  3 17:15 Downloads
+-rw-rw-r-- 1 198097 198097  339 окт  1 15:52 head.txt
+drwxr-xr-x 2 198097 198097 4096 сен  3 17:06 Music
+drwxr-xr-x 2 198097 198097 4096 сен  3 17:06 Pictures
+drwxr-xr-x 2 198097 198097 4096 сен  3 17:06 Public
+-rwxrwxr-x 1 198097 198097   12 сен  3 17:48 scr.sh
+drwxr-xr-x 2 198097 198097 4096 сен  3 17:06 Templates
+drwxr-xr-x 2 198097 198097 4096 сен  3 17:06 Videos
+198097@client05:~$ ls -a
+.              Documents         .pam_environment  .viminfo
+..             Downloads         Pictures          .Xauthority
+.bash_history  .emacs.d          .profile          .Xdefaults
+.bash_logout   .gnupg            Public            .xscreensaver
+.bashrc        .gnuplot_history  .remmina          .xsession-errors
+.cache         head.txt          scr.sh            .xsession-errors.old
+.config        .local            Templates
+Desktop        .mozilla          .thumbnails
+.dmrc          Music             Videos
+198097@client05:~$ ls -F
+Desktop/    Downloads/  Music/     Public/  Templates/
+Documents/  head.txt    Pictures/  scr.sh*  Videos/
+198097@client05:~$ ls -g
+total 40
+drwxr-xr-x 2 198097 4096 сен  3 17:06 Desktop
+drwxr-xr-x 2 198097 4096 сен  3 17:06 Documents
+drwxr-xr-x 3 198097 4096 сен  3 17:15 Downloads
+-rw-rw-r-- 1 198097  339 окт  1 15:52 head.txt
+drwxr-xr-x 2 198097 4096 сен  3 17:06 Music
+drwxr-xr-x 2 198097 4096 сен  3 17:06 Pictures
+drwxr-xr-x 2 198097 4096 сен  3 17:06 Public
+-rwxrwxr-x 1 198097   12 сен  3 17:48 scr.sh
+drwxr-xr-x 2 198097 4096 сен  3 17:06 Templates
+drwxr-xr-x 2 198097 4096 сен  3 17:06 Videos
+198097@client05:~$ ls -laF
+total 168
+drwx------   18 198097 198097  4096 окт  1 15:52 ./
+drwxr-xr-x 1291 root   root   36864 сен  1 03:25 ../
+-rw-------    1 198097 198097   839 окт  1 15:19 .bash_history
+-rw-r--r--    1 198097 198097   220 сен  1  2015 .bash_logout
+-rw-r--r--    1 198097 198097  3771 сен  1  2015 .bashrc
+drwxrwxr-x    8 198097 198097  4096 окт  1 15:20 .cache/
+drwxr-xr-x   18 198097 198097  4096 окт  1 15:53 .config/
+drwxr-xr-x    2 198097 198097  4096 сен  3 17:06 Desktop/
+-rw-r--r--    1 198097 198097    38 окт  1 15:45 .dmrc
+drwxr-xr-x    2 198097 198097  4096 сен  3 17:06 Documents/
+drwxr-xr-x    3 198097 198097  4096 сен  3 17:15 Downloads/
+drwx------    2 198097 198097  4096 сен  3 17:31 .emacs.d/
+drwx------    3 198097 198097  4096 окт  1 15:36 .gnupg/
+-rw-------    1 198097 198097   566 сен  3 17:43 .gnuplot_history
+-rw-rw-r--    1 198097 198097   339 окт  1 15:52 head.txt
+drwxr-xr-x    3 198097 198097  4096 сен  3 17:06 .local/
+drwx------    4 198097 198097  4096 сен  3 17:07 .mozilla/
+drwxr-xr-x    2 198097 198097  4096 сен  3 17:06 Music/
+-rw-r--r--    1 198097 198097   255 окт  1 15:14 .pam_environment
+drwxr-xr-x    2 198097 198097  4096 сен  3 17:06 Pictures/
+-rw-r--r--    1 198097 198097   655 июн 24  2016 .profile
+drwxr-xr-x    2 198097 198097  4096 сен  3 17:06 Public/
+drwx------    2 198097 198097  4096 окт  1 15:21 .remmina/
+-rwxrwxr-x    1 198097 198097    12 сен  3 17:48 scr.sh*
+drwxr-xr-x    2 198097 198097  4096 сен  3 17:06 Templates/
+drwx------    4 198097 198097  4096 сен  3 17:10 .thumbnails/
+drwxr-xr-x    2 198097 198097  4096 сен  3 17:06 Videos/
+-rw-------    1 198097 198097  1156 окт  1 15:52 .viminfo
+-rw-------    1 198097 198097   159 окт  1 15:45 .Xauthority
+-rw-r--r--    1 198097 198097  1600 янв  9  2016 .Xdefaults
+-rw-r--r--    1 198097 198097    14 янв  9  2016 .xscreensaver
+-rw-------    1 198097 198097  3463 окт  1 15:45 .xsession-errors
+-rw-------    1 198097 198097   279 окт  1 15:36 .xsession-errors.old
+198097@client05:~$ ruptime
+Anis        down    2+22:32
+DoroninOA01 down   10+03:44
+Lubuntu       up       2:40,     0 users,  load 1.27, 1.38, 1.28
+Mint        down      23:10
+Sheylunn-UX3down   15+00:46
+User        down    1+03:15
+anton-PC    down   10+04:53
+artem-aka-gadown    1+03:13
+cameron       up    3+06:04,     1 user,   load 0.90, 2.46, 2.46
+client01    down    7+22:43
+client02    down    7+22:26
+client04      up       2:55,     0 users,  load 0.52, 1.02, 0.56
+client05      up       0:13,     1 user,   load 0.32, 0.34, 0.26
+client06      up       2:52,     0 users,  load 1.38, 1.47, 1.22
+client07      up       0:10,     1 user,   load 0.05, 0.40, 0.33
+client18    down   28+07:33
+client19      up       0:46,     1 user,   load 2.81, 1.72, 1.20
+client20    down       0:40
+client21    down   28+07:25
+client22      up       2:55,     0 users,  load 0.34, 0.22, 0.14
+denis-MacBoodown   10+05:11
+dimasik-Aspidown      23:40
+dread-Aspiredown   10+05:44
+liza-Lenovo-down   10+03:16
+nedosekovivadown   14+03:06
+retupmoc    down   10+03:13
+sheylunn-ux3down      23:25
+sofya-Lenovodown   11+05:42
+tyrypyrkin-Sdown    1+03:14
+valli         up      19:15,     1 user,   load 1.41, 1.27, 1.30
+valya-TM1709down    1+02:38
+vanduel-GP72down      23:09
+vlad-Inspirodown    1+06:55
+198097@client05:~$ ruptime -a
+Anis        down    2+22:33
+DoroninOA01 down   10+03:45
+Lubuntu       up       2:43,     2 users,  load 1.58, 1.46, 1.33
+Mint        down      23:12
+Sheylunn-UX3down   15+00:47
+User        down    1+03:16
+anton-PC    down   10+04:54
+artem-aka-gadown    1+03:14
+cameron       up    3+06:04,     2 users,  load 0.90, 2.46, 2.46
+client01    down    7+22:45
+client02    down    7+22:27
+client04      up       2:55,     1 user,   load 0.52, 1.02, 0.56
+client05      up       0:16,     1 user,   load 0.14, 0.22, 0.22
+client06      up       2:55,     1 user,   load 1.21, 1.35, 1.20
+client07      up       0:10,     1 user,   load 0.05, 0.40, 0.33
+client18    down   28+07:34
+client19      up       0:46,     1 user,   load 2.81, 1.72, 1.20
+client20    down       0:41
+client21    down   28+07:26
+client22      up       2:55,     1 user,   load 0.34, 0.22, 0.14
+denis-MacBoodown   10+05:12
+dimasik-Aspidown      23:42
+dread-Aspiredown   10+05:45
+liza-Lenovo-down   10+03:17
+nedosekovivadown   14+03:08
+retupmoc    down   10+03:14
+sheylunn-ux3down      23:27
+sofya-Lenovodown   11+05:43
+tyrypyrkin-Sdown    1+03:15
+valli         up      19:15,     1 user,   load 1.41, 1.27, 1.30
+valya-TM1709down    1+02:39
+vanduel-GP72down      23:11
+vlad-Inspirodown    1+06:56
+198097@client05:~$ ruptime -l
+client19      up       0:46,     1 user,   load 2.81, 1.72, 1.20
+Lubuntu       up       2:43,     0 users,  load 1.58, 1.46, 1.33
+valli         up      19:15,     1 user,   load 1.41, 1.27, 1.30
+client06      up       2:55,     0 users,  load 1.21, 1.35, 1.20
+cameron       up    3+06:04,     1 user,   load 0.90, 2.46, 2.46
+client04      up       2:55,     0 users,  load 0.52, 1.02, 0.56
+client22      up       2:55,     0 users,  load 0.34, 0.22, 0.14
+client05      up       0:16,     1 user,   load 0.14, 0.22, 0.22
+client07      up       0:10,     1 user,   load 0.05, 0.40, 0.33
+client20    down       0:42
+vanduel-GP72down      23:11
+Mint        down      23:12
+sheylunn-ux3down      23:27
+dimasik-Aspidown      23:42
+valya-TM1709down    1+02:40
+artem-aka-gadown    1+03:15
+tyrypyrkin-Sdown    1+03:16
+User        down    1+03:16
+vlad-Inspirodown    1+06:57
+Anis        down    2+22:34
+client02    down    7+22:27
+client01    down    7+22:45
+retupmoc    down   10+03:14
+liza-Lenovo-down   10+03:18
+DoroninOA01 down   10+03:46
+anton-PC    down   10+04:54
+denis-MacBoodown   10+05:13
+dread-Aspiredown   10+05:46
+sofya-Lenovodown   11+05:44
+nedosekovivadown   14+03:08
+Sheylunn-UX3down   15+00:48
+client21    down   28+07:26
+client18    down   28+07:34
+198097@client05:~$ ruptime -r
+vlad-Inspirodown    1+06:57
+vanduel-GP72down      23:12
+valya-TM1709down    1+02:40
+valli         up      19:15,     1 user,   load 1.41, 1.27, 1.30
+tyrypyrkin-Sdown    1+03:16
+sofya-Lenovodown   11+05:44
+sheylunn-ux3down      23:28
+retupmoc    down   10+03:15
+nedosekovivadown   14+03:09
+liza-Lenovo-down   10+03:18
+dread-Aspiredown   10+05:46
+dimasik-Aspidown      23:43
+denis-MacBoodown   10+05:13
+client22      up       2:55,     0 users,  load 0.34, 0.22, 0.14
+client21    down   28+07:27
+client20    down       0:42
+client19      up       0:46,     1 user,   load 2.81, 1.72, 1.20
+client18    down   28+07:35
+client07      up       0:13,     1 user,   load 0.00, 0.22, 0.26
+client06      up       2:55,     0 users,  load 1.21, 1.35, 1.20
+client05      up       0:16,     1 user,   load 0.14, 0.22, 0.22
+client04      up       2:58,     0 users,  load 0.17, 0.60, 0.47
+client02    down    7+22:28
+client01    down    7+22:46
+cameron       up    3+06:07,     1 user,   load 1.52, 2.12, 2.33
+artem-aka-gadown    1+03:15
+anton-PC    down   10+04:55
+User        down    1+03:17
+Sheylunn-UX3down   15+00:48
+Mint        down      23:13
+Lubuntu       up       2:43,     0 users,  load 1.58, 1.46, 1.33
+DoroninOA01 down   10+03:46
+Anis        down    2+22:34
+198097@client05:~$ ruptime -t
+cameron       up    3+06:07,     1 user,   load 1.52, 2.12, 2.33
+valli         up      19:18,     1 user,   load 1.49, 1.27, 1.29
+client22      up       2:58,     0 users,  load 0.01, 0.11, 0.11
+client04      up       2:58,     0 users,  load 0.17, 0.60, 0.47
+client06      up       2:55,     0 users,  load 1.21, 1.35, 1.20
+Lubuntu       up       2:46,     0 users,  load 0.84, 1.26, 1.27
+client19      up       0:49,     1 user,   load 1.36, 1.71, 1.31
+client05      up       0:19,     1 user,   load 0.17, 0.16, 0.17
+client07      up       0:13,     1 user,   load 0.00, 0.22, 0.26
+client20    down       0:43
+vanduel-GP72down      23:13
+Mint        down      23:14
+sheylunn-ux3down      23:29
+dimasik-Aspidown      23:44
+valya-TM1709down    1+02:41
+artem-aka-gadown    1+03:16
+tyrypyrkin-Sdown    1+03:17
+User        down    1+03:18
+vlad-Inspirodown    1+06:58
+Anis        down    2+22:35
+client02    down    7+22:29
+client01    down    7+22:47
+retupmoc    down   10+03:16
+liza-Lenovo-down   10+03:19
+DoroninOA01 down   10+03:47
+anton-PC    down   10+04:56
+denis-MacBoodown   10+05:14
+dread-Aspiredown   10+05:47
+sofya-Lenovodown   11+05:45
+nedosekovivadown   14+03:10
+Sheylunn-UX3down   15+00:49
+client21    down   28+07:28
+client18    down   28+07:36
+198097@client05:~$ ruptime -u
+valli         up      19:18,     1 user,   load 1.49, 1.27, 1.29
+client19      up       0:49,     1 user,   load 1.36, 1.71, 1.31
+cameron       up    3+06:07,     1 user,   load 1.52, 2.12, 2.33
+client07      up       0:13,     1 user,   load 0.00, 0.22, 0.26
+client05      up       0:19,     1 user,   load 0.17, 0.16, 0.17
+client04      up       2:58,     0 users,  load 0.17, 0.60, 0.47
+client06      up       2:58,     0 users,  load 0.78, 1.21, 1.18
+Lubuntu       up       2:46,     0 users,  load 0.84, 1.26, 1.27
+client22      up       2:58,     0 users,  load 0.01, 0.11, 0.11
+client20    down       0:45
+vanduel-GP72down      23:14
+Mint        down      23:15
+sheylunn-ux3down      23:30
+dimasik-Aspidown      23:45
+valya-TM1709down    1+02:43
+artem-aka-gadown    1+03:18
+tyrypyrkin-Sdown    1+03:18
+User        down    1+03:19
+vlad-Inspirodown    1+06:59
+Anis        down    2+22:36
+client02    down    7+22:30
+client01    down    7+22:48
+retupmoc    down   10+03:17
+liza-Lenovo-down   10+03:20
+DoroninOA01 down   10+03:49
+anton-PC    down   10+04:57
+denis-MacBoodown   10+05:16
+dread-Aspiredown   10+05:49
+sofya-Lenovodown   11+05:46
+nedosekovivadown   14+03:11
+Sheylunn-UX3down   15+00:50
+client21    down   28+07:29
+client18    down   28+07:37
+198097@client05:~$ rwho
+198082   client19:tty7 Oct  1 15:14 :48
+198096   client07:tty7 Oct  1 15:53 :15
+198097   client05:tty7 Oct  1 15:45 :18
+198135   cameron:pts/5 Oct  1 15:00 :59
+artem    valli::0      Oct  1 00:09
+198097@client05:~$ whoami
+198097
+198097@client05:~$ tty
+/dev/pts/0
+198097@client05:~$ hostname
+client05
+198097@client05:~$ hostname -i
+127.0.1.1
+198097@client05:~$ hostname -a
+
+198097@client05:~$ uname
+Linux
+198097@client05:~$ uname -a
+Linux client05 4.10.0-19-generic #21-Ubuntu SMP Thu Apr 6 17:03:14 UTC 2017 i686 i686 i686 GNU/Linux198097@client05:~$ pwd
+/stud/198097
+198097@client05:~$ who
+198097   tty7         2019-10-01 15:45 (:0)
+198097@client05:~$ who -b
+         system boot  2019-10-01 15:43
+198097@client05:~$ who -u
+198097   tty7         2019-10-01 15:45 00:27        1051 (:0)
+198097@client05:~$ cd /
+198097@client05:/$ pwd
+/
+198097@client05:/$ cd /bin
+198097@client05:/bin$ ls -aF
+./              fusermount*  nisdomainname@  static-sh@
+../             getfacl*     ntfs-3g*        stty*
+bash*           grep*        ntfs-3g.probe*  su*
+bunzip2*        gunzip*      ntfscat*        sync*
+busybox*        gzexe*       ntfscluster*    systemctl*
+bzcat*          gzip*        ntfscmp*        systemd@
+bzcmp@          hciconfig*   ntfsfallocate*  systemd-ask-password*
+bzdiff*         hostname*    ntfsfix*        systemd-escape*
+bzegrep@        ip*          ntfsinfo*       systemd-hwdb*
+bzexe*          journalctl*  ntfsls*         systemd-inhibit*
+bzfgrep@        kbd_mode*    ntfsmove*       systemd-machine-id-setup*
+bzgrep*         keyctl*      ntfsrecover*    systemd-notify*
+bzip2*          kill*        ntfssecaudit*   systemd-sysusers*
+bzip2recover*   kmod*        ntfstruncate*   systemd-tmpfiles*
+bzless@         less*        ntfsusermap*    systemd-tty-ask-password-agent*
+bzmore*         lessecho*    ntfswipe*       tailf*
+cat*            lessfile@    open@           tar*
+chacl*          lesskey*     openvt*         tempfile*
+chgrp*          lesspipe*    pax*            touch*
+chmod*          ln*          paxcpio@        true*
+chown*          loadkeys*    paxtar@         udevadm*
+chvt*           login*       pidof@          ulockmgr_server*
+cp*             loginctl*    ping*           umount*
+cpio*           lowntfs-3g*  ping4@          uname*
+dash*           ls*          ping6@          uncompress*
+date*           lsblk*       plymouth*       unicode_start*
+dd*             lsmod@       ps*             vdir*
+df*             markov*      pwd*            VTM_diagram*
+dir*            mkdir*       rbash@          wdctl*
+dmesg*          mknod*       readlink*       which*
+dnsdomainname@  mktemp*      red*            whiptail*
+domainname@     more*        rm*             ypdomainname@
+dumpkeys*       mount*       rmdir*          zcat*
+echo*           mountpoint*  rnano@          zcmp*
+ed*             mt@          run-parts*      zdiff*
+efibootdump*    mt-gnu*      sed*            zegrep*
+efibootmgr*     mv*          setfacl*        zfgrep*
+egrep*          nano*        setfont*        zforce*
+false*          nc@          setupcon*       zgrep*
+fgconsole*      nc.openbsd*  sh@             zless*
+fgrep*          netcat@      sh.distrib@     zmore*
+findmnt*        netstat*     sleep*          znew*
+fuser*          networkctl*  ss*
+198097@client05:/bin$ cd ~
+198097@client05:~$ cd ..
+198097@client05:/stud$ cd ~
+198097@client05:~$ cat > f1.txt
+Str1
+Str2
+Str3
+Str4
+Str5
+198097@client05:~$ ls
+Desktop    Downloads  head.txt  Pictures  scr.sh     Videos
+Documents  f1.txt     Music     Public    Templates
+198097@client05:~$ cat f1.txt 
+Str1
+Str2
+Str3
+Str4
+Str5
+198097@client05:~$ cat f1.txt >> f2.txt
+198097@client05:~$ cat f2.txt
+Str1
+Str2
+Str3
+Str4
+Str5
+198097@client05:~$ rm f2.txt 
+198097@client05:~$ cp f1.txt f2.txt
+198097@client05:~$ cat f1.txt f2.txt >> f3.txt
+198097@client05:~$ cat f3.txt 
+Str1
+Str2
+Str3
+Str4
+Str5
+Str1
+Str2
+Str3
+Str4
+Str5
+198097@client05:~$ rm f2.txt f3.txt 
+198097@client05:~$ mkdir lab
+198097@client05:~$ mkdir course
+198097@client05:~$ cp f1.txt lab/
+198097@client05:~$ cp f1.txt course/
+198097@client05:~$ ls lab
+f1.txt
+198097@client05:~$ ls course
+f1.txt
+198097@client05:~$ cd lab
+198097@client05:~/lab$ rm ../f1.txt 
+198097@client05:~/lab$ ls
+f1.txt
+198097@client05:~/lab$ rm f1.txt 
+198097@client05:~/lab$ cd ~
+198097@client05:~$ rm -rf lab
+198097@client05:~$ rm -rf course
+198097@client05:~$ date
+Вт окт  1 16:17:24 EET 2019
+198097@client05:~$ touch f1.txt
+198097@client05:~$ cat > f1.txt
+Str1
+Str2
+Str3 
+Str4
+Str5
+Str6
+Str7
+Str8
+198097@client05:~$ md5sum f1.txt 
+e786addfc82b230a81816d8b50501a55  f1.txt
+198097@client05:~$ echo 'Hello world!' >> f1.txt 
+198097@client05:~$ nl f1.txt 
+     1	Str1
+     2	Str2
+     3	Str3
+     4	Str4
+     5	Str5
+     6	Str6
+     7	Str7
+     8	Str8
+     9	Hello world!
+198097@client05:~$ od f1.txt 
+0000000 072123 030562 051412 071164 005062 072123 031562 051412
+0000020 071164 005064 072123 032562 051412 071164 005066 072123
+0000040 033562 051412 071164 005070 062510 066154 020157 067567
+0000060 066162 020544 000012
+0000065
+198097@client05:~$ tail f1.txt 
+Str1
+Str2
+Str3
+Str4
+Str5
+Str6
+Str7
+Str8
+Hello world!
+198097@client05:~$ tail -n 2 f1.txt 
+Str8
+Hello world!
+198097@client05:~$ split f1.txt 
+198097@client05:~$ wc f1.txt 
+ 9 10 53 f1.txt
+198097@client05:~$ du f1.txt 
+4	f1.txt
+198097@client05:~$ echo 'Something!'
+Something!
+198097@client05:~$ env
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+LC_MEASUREMENT=ru_RU.UTF-8
+_LXSESSION_PID=1051
+XDG_CONFIG_HOME=/stud/198097/.config
+LESSCLOSE=/usr/bin/lesspipe %s %s
+LC_PAPER=ru_RU.UTF-8
+LC_MONETARY=ru_RU.UTF-8
+XDG_MENU_PREFIX=lxde-
+LANG=en_US.UTF-8
+GDM_LANG=ru
+DISPLAY=:0
+QT_STYLE_OVERRIDE=gtk
+GTK_OVERLAY_SCROLLING=0
+XDG_VTNR=7
+SSH_AUTH_SOCK=/tmp/ssh-E3NoJQwtf8GW/agent.1051
+LC_NAME=ru_RU.UTF-8
+XDG_SESSION_ID=c2
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/198097
+USER=198097
+DESKTOP_SESSION=Lubuntu
+QT_QPA_PLATFORMTHEME=lxqt
+PWD=/stud/198097
+HOME=/stud/198097
+SSH_AGENT_PID=1113
+QT_ACCESSIBILITY=1
+XDG_SESSION_TYPE=x11
+QT_PLATFORM_PLUGIN=lxqt
+XDG_DATA_DIRS=/etc/xdg/lubuntu:/usr/local/share:/usr/share:/usr/share/gdm:/var/lib/menu-xdg:/usr/share/Lubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+XDG_SESSION_DESKTOP=Lubuntu
+LC_ADDRESS=ru_RU.UTF-8
+LC_NUMERIC=ru_RU.UTF-8
+PAPERSIZE=a4
+TERM=xterm
+SHELL=/bin/bash
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+XDG_CURRENT_DESKTOP=LXDE
+QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
+XDG_SEAT=seat0
+SHLVL=1
+LANGUAGE=en
+LC_TELEPHONE=ru_RU.UTF-8
+GDMSESSION=Lubuntu
+LOGNAME=198097
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/198097/bus
+XDG_RUNTIME_DIR=/run/user/198097
+QT_XCB_FORCE_SOFTWARE_OPENGL=1
+XAUTHORITY=/stud/198097/.Xauthority
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_CONFIG_DIRS=/etc/xdg/lubuntu:/etc/xdg/xdg-Lubuntu:/etc/xdg
+PATH=/stud/198097/bin:/stud/198097/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+LC_IDENTIFICATION=ru_RU.UTF-8
+LESSOPEN=| /usr/bin/lesspipe %s
+LC_TIME=ru_RU.UTF-8
+_=/usr/bin/env
+OLDPWD=/stud/198097/lab
+198097@client05:~$ factor 100
+100: 2 2 5 5
+198097@client05:~$ pinky
+Login    Name                 TTY      Idle   When             Where
+198097   М8О-104Б-19 Че  tty7     00:37  2019-10-01 15:45 :0
+198097@client05:~$ seq 1 1 100
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+198097@client05:~$ shuf f1.txt 
+Hello world!
+Str7
+Str1
+Str6
+Str3
+Str8
+Str2
+Str4
+Str5
+198097@client05:~$ shuf -e str1 str2 str3
+str3
+str1
+str2
+198097@client05:~$ fmt f1.txt 
+Str1 Str2 Str3 Str4 Str5 Str6 Str7 Str8 Hello world!
+198097@client05:~$ base64 f1.txt 
+U3RyMQpTdHIyClN0cjMKU3RyNApTdHI1ClN0cjYKU3RyNwpTdHI4CkhlbGxvIHdvcmxkIQo=
+198097@client05:~$ base64 --version
+base64 (GNU coreutils) 8.26
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Simon Josefsson.
+198097@client05:~$ sha1sum f1.txt 
+c7a7710033aad8c6881017adfc89b65e1e7975fd  f1.txt
+198097@client05:~$ yes hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+hello
+^Cllo

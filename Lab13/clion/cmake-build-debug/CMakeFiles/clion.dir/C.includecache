@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13/clion/main.c
+stdio.h
+-
+set.h
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13/clion/set.h
+
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13/clion/set.h
+

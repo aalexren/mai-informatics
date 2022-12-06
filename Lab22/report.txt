@@ -1,0 +1,201 @@
+198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab22$ cat head.txt 
+***********************************
+*                                 *
+*    Лабораторная работа №22      *
+*   Издательская система TEX      *
+*  Выполнил студент группы 104    *
+*  Черница Артём Александрович    *
+*                                 *
+***********************************
+198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab22$ cat file.tex
+\documentclass[a5paper]{book}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[integrals]{wasysym} % integrals
+\usepackage{mathtext}
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{soul}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+
+\usepackage{ragged2e} % выравнивание по ширине
+\justifying
+
+\pagenumbering{gobble} % удаляет номер страницы внизу страницы
+
+\newcommand{\eqdef}{{=\joinrel=}} % длинное "равно"
+
+\begin{document}
+
+% отступы от формул
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+
+\lhead{\textsl{\scriptsize 346}}
+\chead{\textsl{\scriptsize {\it Глава} 25}}
+\pagestyle{fancy}
+
+\fontdimen2\font=0.4em % расстояние между словами
+
+\noindent Следовательно, \begin{align*} \int\limits_a^b{f(x)\,dx}\;существует\;и = L. \end{align*}
+\indent \textbf{Теорема 369.} \textit{Каждая функция, непрерывная в} [\textit{a}, \textit{b}], \textit{интегрируема от a до b.}
+\\ \indent Д\kern+0.2em о\kern+0.2em к\kern+0.2em а\kern+0.2em з\kern+0.2em а\kern+0.2em т\kern+0.2em е\kern+0.2em л\kern+0.2em ь\kern+0.2em с\kern+0.2em т\kern+0.2em в\kern+0.2em о.
+Пусть $f(x)$ \textemdash \, функция, удовлетворяющая условию теоремы, и пусть задано $\delta > 0$. В силу теоремы 154, существует $\varepsilon > 0$ такое, что
+\begin{gather*}
+    |f(x) \, \textemdash \, f(\beta)| < \frac{\delta}{2(b \, \textemdash \, a)} \, при \; a \leqslant \alpha \leqslant b, \: a \leqslant \beta \leqslant b, 
+    \\ |\alpha \, \textemdash \, \beta| \leqslant \varepsilon.
+\end{gather*}
+Если, следовательно, каждое $e_v < \varepsilon $, то каждое $$ s_v \leqslant \frac{\delta}{2(b-a)} $$
+и
+$$ \sum es \leqslant \frac{\delta}{2(b-a)} \sum e \; \eqdef \; \frac{\delta}{2} < \delta.$$
+Тем самым выполнение условия Римана проверено (что, согласно теореме 368, в полном объёме даже не было необходимо). \vspace{2mm} \\
+\indent \textbf{Определение 85.}\textit{ Функция $f(x)$, определённая в \textnormal{[}\textit{a},\, \textit{b}\textnormal{]}, называется там монотонной, если для $ a \leqslant \alpha < \beta \leqslant b$ всегда}
+$$ f(\alpha) \leqslant f(\beta), $$
+\textit{либо всегда}
+$$ f(\alpha) \geqslant f(\beta). $$
+\textit{В первом случае $f(x)$ называют монотонно не убывающей, во втором \textemdash \, монотонно не возрастающей.} \\
+\indent (Определения 71 и 72 исключают знак равенства между $f(\alpha)$ и $f(\beta)$). \vspace{2mm} \\
+\indent \textbf{Теорема 370.}\textit{ Каждая монотонная в \textnormal{[}$a, \; b$\textnormal{]} функция интегрируема от $a$ до $b$.}
+
+\newpage
+
+\lhead{}
+\chead{\textsl{\scriptsize {\it Понятие определённого интеграла}}}
+\rhead{\textsl{\scriptsize 347}}
+\pagestyle{fancy}
+
+\indent Д\kern+0.2em о\kern+0.2em к\kern+0.2em а\kern+0.2em з\kern+0.2em а\kern+0.2em т\kern+0.2em е\kern+0.2em л\kern+0.2em ь\kern+0.2em с\kern+0.2em т\kern+0.2em в\kern+0.2em о.
+Пусть $f(x)$ \textemdash \, функция, удовлетворяющая условию теоремы. В первом случае определения 85 имеем
+$$ l_v \eqdef f(a_v), \kern+0.7em \lambda \eqdef f(a_{v-1}), \kern+0.7em s_v \eqdef f(a_v) \, \textemdash \, f(a_{v-1}),$$
+и для $e_v < \varepsilon$ получаем
+$$ \sum es \leqslant \varepsilon \sum s \; \eqdef \; \varepsilon(f(b) \, \textemdash \, f(a)). $$
+\indent Во втором случае
+$$ l_v \eqdef f(a_{v-1}), \kern+0.7em \lambda \eqdef f(a_v), \kern+0.7em s_v \eqdef f(a_{v-1}) \, \textemdash \, f(a_v),$$
+и для $e_v < \varepsilon$ получаем
+$$ \sum es \leqslant \varepsilon \sum s \; \eqdef \; \varepsilon(f(a) \, \textemdash \, f(b)). $$
+Таким образом, каково бы ни было $\delta > 0$, если $e_v < \varepsilon$, где
+$$ \varepsilon \, \eqdef \, \frac{\delta}{|f(b) \, \textemdash \, f(a)| + 1}, $$
+то имеем
+$$ \sum es < \delta.$$ 
+\indent \textbf{Теорема 371.}\textit{ Каждая ограниченная в \textnormal{[}a,\, b\textnormal{]} функция, для которой число мест разрыва внутри этого интервала не бексонечно, интегрируема от a до b.}
+\\ \indent Д\kern+0.2em о\kern+0.2em к\kern+0.2em а\kern+0.2em з\kern+0.2em а\kern+0.2em т\kern+0.2em е\kern+0.2em л\kern+0.2em ь\kern+0.2em с\kern+0.2em т\kern+0.2em в\kern+0.2em о.
+Пусть $f(x)$ \textemdash \, функция, удовлетворяющая условию теоремы, и
+$$ |f(x)| < c \; \; в \; \; [a,\;\; b].$$
+Обозначим $a, b$ и возможные внутренние места разрыва функции $f(x)$ через
+$$\eta_k, \;\; 0 \leqslant k \leqslant m,\; k \;\; целое, $$
+так, чтобы 
+\begin{gather*}
+    \eta_{k-1} < \eta_k \;\; при \;\; 1 \leqslant k \leqslant m,
+    \\ \eta_0 \, \eqdef \, a, \; \; \eta_m \, \eqdef \, b
+\end{gather*}
+\indent Пусть $\delta > 0$. Положим 
+\begin{gather*}
+    \underset{1 \, \leqslant \, k \, \leqslant \, m}{\textnormal{Min}}(\eta_k \textemdash \, \eta_{k-1}) \eqdef \zeta,
+    \\ \gamma \; \eqdef \; \textnormal{Min}\left( \frac{\delta}{8mc}, \; \frac{\zeta}{3}\right).
+\end{gather*}
+
+\end{document}198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informat$ latex file.tex
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./file.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/wasysym.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/t2/mathtext.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/share/texlive/texmf-dist/tex/latex/base/t2aenc.dfu)))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)))
+(/usr/share/texlive/texmf-dist/tex/generic/babel-russian/russianb.ldf))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/soul/soul.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everysel.sty))
+No file file.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+ABD: EverySelectfont initializing macros
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd) [1]
+Overfull \hbox (5.66968pt too wide) in paragraph at lines 79--81
+\T2A/cmr/m/n/10 ��������� $\OML/cmm/m/it/10 a; b$ \T2A/cmr/m/n/10 � ���-���-���
+ ����-���-��� ��-��� ���-��-�� ����-
+[2] (./file.aux) )
+(see the transcript file for additional information)
+Output written on file.dvi (2 pages, 6232 bytes).
+Transcript written on file.log.
+198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab22$ ls
+ file.aux   file.log   head.txt     l22-2012.pdf
+ file.dvi   file.tex  'Icon'$'\r'
+198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab22$ dvips file.dvi
+This is dvips(k) 5.997 Copyright 2017 Radical Eye Software (www.radicaleye.com)
+' TeX output 2020.03.28:0238' -> file.ps
+</usr/share/texlive/texmf-dist/dvips/base/tex.pro>
+</usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc>
+</usr/share/texlive/texmf-dist/dvips/base/texps.pro>. 
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/wasy2-ps/wasy10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfti0700.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfsl0700.pfb>[1] [2] 
+198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab22$ ls
+ file.aux   file.log   file.tex  'Icon'$'\r'
+ file.dvi   file.ps    head.txt   l22-2012.pdf
+198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab22$ dvipdf file.dvi
+198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab22$ ls
+ file.aux   file.log   file.ps	  head.txt     l22-2012.pdf
+ file.dvi   file.pdf   file.tex  'Icon'$'\r'
+198097@client17:/media/psf/Home/Yandex.Disk.localized/MAI/Informatics/Labs/Lab22$ 

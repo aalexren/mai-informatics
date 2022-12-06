@@ -1,0 +1,3 @@
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13/clion/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13/clion/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/kot_mapku3/Yandex.Disk.localized/MAI/Informatics/Labs/Lab13/clion/cmake-build-debug/CMakeFiles/clion.dir
